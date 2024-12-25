@@ -45,6 +45,7 @@ COPY sequencer /app/zsequencer/sequencer
 COPY common /app/zsequencer/common
 COPY config.py /app/zsequencer/config.py
 COPY run.py /app/zsequencer/run.py
+COPY nodes.py /app/zsequencer/nodes.py
 
-# Command to run the application
-CMD ["python3", "zsequencer/run.py"]
+# Command to run the nodes.py script first and then run.py
+CMD ["sh", "-c", "python3 zsequencer/nodes.py $NODE_IP $NODE_PORT && python3 zsequencer/run.py"]

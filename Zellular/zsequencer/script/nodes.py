@@ -1,17 +1,23 @@
 import os
+import sys
 import json
 from eigensdk.crypto.bls import attestation
+
+# Check if node_ip and node_port are provided as command-line arguments
+if len(sys.argv) != 3:
+    raise ValueError("Please provide NODE_IP and NODE_PORT as command-line arguments.")
+
+node_ip = sys.argv[1]
+node_port = sys.argv[2]
 
 # Load environment variables
 from dotenv import load_dotenv
 load_dotenv()
 
-# Variables from environment and build args
+# Variables from environment
 sequencer_id = os.getenv("ZSEQUENCER_INIT_SEQUENCER_ID")
 file_path = os.getenv("ZSEQUENCER_BLS_KEY_FILE")
 password = os.getenv("ZSEQUENCER_BLS_KEY_PASSWORD")
-node_ip = os.getenv("NODE_IP", "127.0.0.1")
-node_port = os.getenv("NODE_PORT", "5101")
 
 if not sequencer_id or not file_path or not password:
     raise ValueError("Ensure ZSEQUENCER_INIT_SEQUENCER_ID, FILE_PATH, and PASSWORD are set in the environment variables")
