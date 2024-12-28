@@ -187,7 +187,10 @@ Repeat similarly for operators 3 and 4, ensuring the configurations are adjusted
    for i in {1..4}
    do
      cd zsequencer-operator$i
-     docker build --build-arg NODE_IP=127.0.0.1 --build-arg NODE_PORT=510$i -t zsequencer-operator$i .
+     docker build --build-arg NODE_IP=127.0.0.1 --build-arg NODE_PORT=510$i --build-arg NODES_COUNT=4 -t zsequencer-operator$i .
+     docker run -d --name zsequencer-operator$i zsequencer-operator$i
+     docker exec zsequencer-operator$i cat /apps/nodes.json > nodes.json
+     docker stop zsequencer-operator$i
      cd ..
    done
    ```

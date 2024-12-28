@@ -8,10 +8,12 @@ ENV PYTHONUNBUFFERED=1 \
 # Accept build arguments for dynamic configuration of IP and Port
 ARG NODE_IP=127.0.0.1
 ARG NODE_PORT=6001
+ARG NODE_COUNT=4
 
 # Set environment variables from build arguments
 ENV NODE_IP=${NODE_IP} \
-    NODE_PORT=${NODE_PORT}
+    NODE_PORT=${NODE_PORT} \
+    NODE_COUNT=${NODE_COUNT}
 
 # Install necessary packages and dependencies
 RUN apt-get update && \
