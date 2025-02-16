@@ -42,11 +42,11 @@ This will compile the smart contracts.
 
 ---
 
-## **4. Create Necessary Directories (Optional)**
-Some directories required for saving deployment details may not exist. Check if they are available, and if not, create them manually:
+## **4. Create Necessary Directories**
+Some directories required for saving deployment details may not exist. Create them manually:
 ```sh
-[ ! -d "script/output/local" ] && mkdir -p script/output/local
-[ ! -d "local" ] && mkdir -p local
+mkdir -p script/output/local
+mkdir -p local
 ```
 This ensures Foundry can store required output files.
 
